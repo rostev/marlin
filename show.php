@@ -1,21 +1,15 @@
 <?php
     error_reporting(-1);
-    require_once "inc/functions.php";
 
-    try {
-        $pdo = new PDO("pgsql:host=192.168.2.20;port=5432;dbname=notepad;user=rostev;password=asjk24qu");
+    require_once "database/QueryBuilder.php";
 
-        $sql = "SELECT * FROM tasks WHERE id=:id;";
-        $statement = $pdo->prepare($sql);
-        $statement->execute(["id" => $_GET["id"]]);
-        $task = $statement->fetch(PDO::FETCH_ASSOC);
+    use database\QueryBuilder;
 
-    } catch (PDOException $exception) {
-        $task = [];
-        echo $exception->getMessage();
-    }
-
+    $db = new QueryBuilder();
+    //$task = $db->getTask($_GET["id"]);
+    $task = $db->getOne("tasks", $_GET["id"]);
 ?>
+
 <!doctype html>
 <html lang="en">
     <head>

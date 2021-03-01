@@ -1,27 +1,13 @@
 <?php
     error_reporting(-1);
-    require_once "inc/functions.php";
 
-    try {
+    require_once "database/QueryBuilder.php";
 
-        debug($_POST);
+    use database\QueryBuilder;
 
-        $pdo = new PDO("pgsql:host=192.168.2.20;port=5432;dbname=notepad;user=rostev;password=asjk24qu");
+    $db = new QueryBuilder();
+//    $db->addTask($_POST);
+    $db->store("tasks", $_POST);
 
-        $sql = "INSERT INTO tasks (title, content) VALUES (:title, :content)";
-
-        $statement = $pdo->prepare($sql);
-
-        /*        $statement->bindParam("title", $_POST["title"]);
-                $statement->bindParam("content", $_POST["content"]);*/
-
-        $statement = $pdo->prepare($sql);
-
-        $statement->execute($_POST);
-
-        header("Location: index.php");
-
-    } catch (PDOException $exception) {
-        $tasks = [];
-        echo $exception->getMessage();
-    }
+    header("Location: index.php");
+    exit;

@@ -1,6 +1,3 @@
-<?php
-    require_once "inc/functions.php";
-?>
 <!doctype html>
 <html lang="en">
     <head>

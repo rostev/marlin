@@ -1,22 +1,10 @@
 <?php
+
     error_reporting(-1);
     require_once "inc/functions.php";
+    require_once "database/QueryBuilder.php";
 
-    try {
-        /*        $pdo = new PDO("pgsql:host=192.168.2.20;port=5432;dbname=notepad",
-                    "rostev",
-                    "asjk24qu");*/
-        $pdo = new PDO("pgsql:host=192.168.2.20;port=5432;dbname=notepad;user=rostev;password=asjk24qu");
-
-        $sql = "SELECT * FROM tasks ORDER BY id;";
-        $statement = $pdo->prepare($sql);
-        $statement->execute();
-        $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    } catch (PDOException $exception) {
-        $tasks = [];
-        echo $exception->getMessage();
-    }
+    use database\QueryBuilder;
 
     /*    $tasks = [
             [
@@ -36,7 +24,13 @@
             ],
 
         ];*/
+
+    $db = new QueryBuilder();
+//    $tasks = $db->getAllTasks();
+    $tasks = $db->all("tasks");
+
 ?>
+
 <!doctype html>
 <html lang="en">
     <head>
