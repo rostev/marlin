@@ -1,0 +1,14 @@
+{
+    "name": "rostev/web",
+    "description": "Ruprecht",
+    "authors": [
+        {
+            "name": "Ruprecht",
+            "email": "rostevWork@mail.ru"
+        }
+    ],
+    "require": {
+        "delight-im/auth": "^8.2",
+        "illuminate/support": "^8.30"
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "rostev/marlin",
+  "authors": [
+    {
+      "name": "Ruprecht",
+      "email": "rostevWork@mail.ru"
+    }
+  ],
+  "require": {
+  },
+  "description": "",
+  "autoload": {
+    "psr-4": {
+      "App\\": "database/"
+    }
+  }
+}

@@ -1,34 +1,5 @@
 <?php
-
-    error_reporting(-1);
-    require_once "inc/functions.php";
-    require_once "database/QueryBuilder.php";
-
-    use database\QueryBuilder;
-
-    /*    $tasks = [
-            [
-                "id" => 12,
-                "title" => "Title 2",
-                "content" => "Content for title 2",
-            ],
-            [
-                "id" => 13,
-                "title" => "Title 3",
-                "content" => "Content for title 3",
-            ],
-            [
-                "id" => 14,
-                "title" => "Title 4",
-                "content" => "Content for title 4",
-            ],
-
-        ];*/
-
-    $db = new QueryBuilder();
-//    $tasks = $db->getAllTasks();
     $tasks = $db->all("tasks");
-
 ?>
 
 <!doctype html>
@@ -50,7 +21,7 @@
                 <div class="col-md-12">
 
                     <h1>All tasks</h1>
-                    <a href="create.php" class="btn btn-success mt-3">Add task</a>
+                    <a href="create" class="btn btn-success mt-3">Add task</a>
 
                     <table class="table mt-3">
                         <thead>
@@ -61,6 +32,7 @@
                         </tr>
                         </thead>
                         <tbody>
+
                         <? foreach ($tasks as $task): ?>
                             <tr>
                                 <td><?= $task["id"] ?></td>
@@ -79,6 +51,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>

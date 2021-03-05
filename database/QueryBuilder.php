@@ -2,7 +2,7 @@
 
     namespace database;
 
-    require_once "inc/functions.php";
+    require_once "../inc/functions.php";
 
     use PDO;
     use PDOException;
@@ -14,6 +14,22 @@
         public function __construct()
         {
             $this->pdo = new PDO("pgsql:host=192.168.2.20;port=5432;dbname=notepad;user=rostev;password=asjk24qu");
+        }
+
+        /**
+         * @return PDO
+         */
+        public function getPdo(): PDO
+        {
+            return $this->pdo;
+        }
+
+        /**
+         * @param PDO $pdo
+         */
+        public function changePdo(PDO $pdo): void
+        {
+            $this->pdo = $pdo;
         }
 //        public function getAllTasks(): array
 //        {
